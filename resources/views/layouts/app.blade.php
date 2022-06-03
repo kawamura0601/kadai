@@ -33,7 +33,7 @@
 
             <footer>
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    <p style="text-align: right;">copyright 2022 ppp</p>
+                    <p style="text-align: right; padding-right: 10px;">copyright 2022 ppp</p>
                     <hr>
                 </div>
             </footer>

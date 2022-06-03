@@ -106,7 +106,8 @@ return [
     'prohibited_if'        => ':attributeフィールドは、:otherが:valueの場合は禁止されています。',
     'prohibited_unless'    => ':attributeフィールドは、:otherが:valuesでない限り禁止されています。',
     'prohibits'            => 'The :attribute field prohibits :other from being present.',
-    'regex'                => ':attributeには、有効な正規表現を指定してください。',
+    // 'regex'                => ':attributeには、有効な正規表現を指定してください。', 【覚書】デフォルトの文言
+    'regex'                => ':attributeには、「－」の値は使用できません。',
     'required'             => ':attributeは、必ず指定してください。',
     'required_array_keys'  => 'The :attribute field must contain entries for: :values.',
     'required_if'          => ':otherが:valueの場合、:attributeを指定してください。',
@@ -135,15 +136,8 @@ return [
         ],
     ],
     'attributes' => [
-        'password' => 'パスワード',
-        'headline' => '見出し',
-        'period' => '施工期間',
-        'cs_request' => 'お客様要望',
-        'lead' => 'リード文',
-        'location' => '所在地',
-        'type1' => '用途1',
-        'content_tag1' => '工事内容1',
-        'image0' => 'ファイル',
-        'img_content' => '画像説明文',
+        'name' => '名前',
+        'email' => 'メールアドレス',
+        'age' => '年齢',
     ],
 ];
