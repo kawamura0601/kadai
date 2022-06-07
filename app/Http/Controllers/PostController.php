@@ -15,7 +15,8 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return view('post.index', compact('posts'));
+        $gender = ['男性', '女性'];
+        return view('post.index', compact('posts', 'gender'));
     }
 
     /**
@@ -25,7 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('post.create');
+        return view('post.control');
     }
 
     /**
@@ -34,20 +35,12 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Post $post)
     {
-        $inputs = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'age' => 'required|regex:/^[1-9][0-9]+/|not_in:0'
-        ]);
+        Post::storeValidate($request);
+        Post::storePost($request, $post);
 
-        $post = new Post();
-        $post->name = $request->name;
-        $post->email = $request->email;
-        $post->age = $request->age;
-        $post->save();
-        return redirect()->route('post.create')->with('message', '新規登録を完了しました');
+        return redirect()->route('post.index')->with('message', '新規登録を完了しました');
     }
 
     /**
@@ -69,7 +62,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('post.edit', compact('post'));
+        return view('post.control', compact('post'));
     }
 
     /**
@@ -81,19 +74,10 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $inputs = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'age' => 'required|regex:/^[1-9][0-9]+/|not_in:0'
-        ]);
+        Post::updateValidate($request, $post);
+        Post::updatePost($request, $post);
 
-        $post->name = $request->name;
-        $post->email = $request->email;
-        $post->age = $request->age;
-        unset($post['_token']);
-        $post->update();
-
-        return redirect()->route('post.edit', compact('post'))->with('message', '内容を修正しました');
+        return redirect()->route('post.index')->with('message', '内容を修正しました');
     }
 
     /**

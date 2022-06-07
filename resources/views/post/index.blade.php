@@ -19,6 +19,7 @@
                             <th class="text-lg text-gray-700 font-semibold hover:underline cursor-pointer">名前</th>
                             <th class="text-lg text-gray-700 font-semibold hover:underline cursor-pointer">メールアドレス</th>
                             <th class="text-lg text-gray-700 font-semibold hover:underline cursor-pointer">年齢</th>
+                            <th class="text-lg text-gray-700 font-semibold hover:underline cursor-pointer">性別</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -28,6 +29,7 @@
                                 <td class="mt-4 text-gray-600 py-4">{{ $post->name }}</td>
                                 <td class="mt-4 text-gray-600 py-4">{{ $post->email }}</td>
                                 <td class="mt-4 text-gray-600 py-4">{{ $post->age }}</td>
+                                <td class="mt-4 text-gray-600 py-4">{{ $gender[$post->gender] }}</td>
                                 <td>
                                     <!-- 操作（修正ボタン） -->
                                     <form method="get" action="{{route('post.edit', $post)}}">
